@@ -3,8 +3,13 @@ logs
 *.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
+yarn-error.log* 
 lerna-debug.log*
+
+# Prettier
+prettierrc.json
+.vscode
+
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json

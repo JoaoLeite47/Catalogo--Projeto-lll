@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <title>Hopee</title>
+  </head>
+
+  <body>
+    <%- include('./partials/header.ejs') %>
+    <section class="wallp">
+      <img src="img/Wallpaper Gamer.png" alt="" />
+      <div class="sign">
+        <span class="fast-flicker">DE</span>GAMERS<span class="flicker">PARA</span>GAMERS
+      </div>
+    </section>
+    <main>
+      <section>
+        <div class="container">
+          <div class="glitch" data-text="PORQUE_SEM_RGB_NÃO_É_GAMER!">PORQUE_SEM_RGB_NÃO_É_GAMER!</div>
+        </div>
+      </section>
+
+      <% lista_produtos.forEach((produto,id) => { %>
+      <div class = base>
+        <div class = card>
+          <div class = image>
+            <img href = "#" src = "<%= produto.img %>">
+          </div>
+          <div class = content>
+            <h3><%= produto.nome %></h3>
+            <p><%= produto.descricao %></p>
+            <a id="apagar" href="/getById/<%= produto.id %>/delete">delete</a>
+              <a id="editar" href="/getById/<%= produto.id %>/put"%>">editar</a>
+              <h3>R$<%= produto.preco %></h3>
+          </div>
+        </div>    
+      </div>
+      <% }) %>
+
+    </main>
+    <section>
+      <img id="back" src="/img/background.png" alt="backgroung" />
+    </section>
+    <%- include('./partials/footer.ejs') %>
+  </body>
+  <script src="/js/script.js"></script>
+</html>
