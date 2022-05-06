@@ -31,19 +31,27 @@
           </div>
           <div class = content>
             <h3><%= produto.nome %></h3>
-            <p><%= produto.descricao %></p>
-            <a id="apagar" href="/getById/<%= produto.id %>/delete">delete</a>
-              <a id="editar" href="/getById/<%= produto.id %>/put"%>">editar</a>
-              <h3>R$<%= produto.preco %></h3>
+            <a class="rem_edit" href="/getEdit/<%= produto.id %>/delete">delete</a>
+              <a class="rem_edit" href="/getEdit/<%= produto.id %>/put">editar</a>
+              <div>
+                <span class="span2" >
+                  <a id="detalhe" href="/detalhes/<%= produto.id %> "></a>
+                </span>
+              </div>
           </div>
         </div>    
       </div>
       <% }) %>
-
     </main>
+
+      <% if (produtoPut != null) { %> 
+        <%- include('./partials/modalput.ejs') %>
+      <% } %>
+
     <section>
       <img id="back" src="/img/background.png" alt="backgroung" />
     </section>
+
     <%- include('./partials/footer.ejs') %>
   </body>
   <script src="/js/script.js"></script>

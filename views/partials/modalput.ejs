@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <section class="modal_overlay" id="overlay">
+      <div class="modal" id="modal">
+        <div class="modal_header">
+          <h3>Atualizar Produto</h3>
+          <a id="close_modal_put" href="/">X</a>
+        </div>
+
+        <div class="modal_body">
+         <section id="formulario">
+          <form id="form" action="/update/<%= produtoPut.id %> " method="post">
+            <label for="img">Link da Imagem</label>
+            <input
+              type="url"
+              name="img"
+              id="img"
+              required
+              value="<%= produtoPut.img%>"
+            />
+
+            <label for="nome">nome</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              required
+              value="<%= produtoPut.nome%>"
+            />
+
+            <label for="descricao">descrição</label>
+            <input
+              type="text"
+              name="descricao"
+              id="descricao"
+              required
+              value="<%= produtoPut.descricao%>"
+            />
+
+            <label for="preco">preço</label>
+            <input
+              min="1"
+              type="number"
+              name="preco"
+              id="preco"
+              required
+              value="<%= produtoPut.preco%>"
+            />
+
+            <button id="botton_up" type="submit">Atualizar</button>
+          </form>
+        </section>
+        </div>
+
+      </div>
+    </section>
+  </body>
+</html>

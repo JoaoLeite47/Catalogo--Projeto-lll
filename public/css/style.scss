@@ -12,8 +12,8 @@ body {
   height: 100vh; /* altura total da página */
   width: 100vw; /* tamanho da tela */
 }
-
-header {
+/*header*/
+header { /* cabeçalho */
   display: flex; /* exibir como flex */
   padding: 0.5rem; /* padding */
   align-items: center; /* alinhar itens */
@@ -37,15 +37,20 @@ header a { /* link */
   font-size: 1.5rem;
   color: white;
   text-decoration: none;
-}
 
+}
 header ul { /* lista */
   display: flex;
   list-style: none;
   gap: 16px; /* espaçamento */
 }
 header ul li { /* item da lista */
-  color: #111111;
+  color: $primary_color;
+  font-weight: bold;
+  transition-duration: 0.5s;
+}
+header ul li:hover {
+color: #ffffff;
 }
 
 main {   
@@ -55,7 +60,7 @@ background-color: #111111;
   min-height: 100%; /* altura mínima */
   padding: 10px;
 }
-.wallp {
+.wallp { /*wallpaper inicial*/
   width: 100%;
   height: 500;
 }
@@ -398,7 +403,7 @@ background-color: #111111;
   --speed-normal: 0.5s;
   --speed-fast: 0.8s;
 }
-.content a{ /*button edit and delet*/
+.content .rem_edit{ /*button edit and delet*/
   position: relative;
   font-size: 2rem;
   width: 20%;
@@ -435,42 +440,85 @@ background-color: #111111;
   }
 }
 
+.span2{ /*button de detalhes*/
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+  margin-top: 1rem;
+}
+.span2 a{ /*button de detalhes*/
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  
+}
+.span2 a:before, 
+.span2 a:after{ 
+  position: absolute;
+  content: "Detalhes";
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid $primary_color;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.span2 a:before{ 
+  color: #fff;
+  background: $primary_color;
+  transform: rotateY(0deg) translateZ(25px);
+}
+.span2 a:after{
+  color: $primary_color;
+  transform: rotateX(90deg) translateZ(25px);
+}
+.span2 a:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
 
 /*PAGINA CADASTRO!*//////////////////////////////////////////////////////////*PAGINA CADASTRO*/
 
-$char-w: 1ch;
-$gap: .5*$char-w;
-$n-char: 20;
-$in-w: $n-char*($char-w + $gap);
+$character-w: 1ch; /* width do character */
+$gap: .5*$character-w; /* gap entre os caracteres */
+$n-character: 12; /* nnumeros aparentes de characters */
+$in-w: $n-character*($character-w + $gap); /* espaço entre o input */
+
 
 section#register { /*section cadastro*/
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  padding: 3rem;
+  align-items: center;
 }
 
 section#register h1 { /*titulo cadastro*/
   width: 100%;
-  text-align: left;
+  text-align: center;
+  padding-top: 3rem;
   padding-bottom: 3rem;
   color: $primary_color;
   font-size: 4rem;
   margin: 1rem;
 }
 section#register form { /*form cadastro*/
-  width: 50%;
+  width: 50vw;
 }
 
-section#register form input { /*inputs cadastro*/
+section#formulario form input { /*inputs cadastro*/
   display: block;
-	margin: 2em auto;
+	margin: 1em auto;
 	border: none;
 	padding: 0;
 	width: $in-w;
 	background: repeating-linear-gradient(90deg, 
-		dimgrey 0, dimgrey $char-w, 
-		transparent 0, transparent $char-w + $gap) 
+		dimgrey 0, dimgrey $character-w, 
+		transparent 0, transparent $character-w + $gap) 
 		0 100%/ #{$in-w - $gap} 2px no-repeat;
 	font: 5ch droid sans mono, consolas, monospace;
 	letter-spacing: $gap;
@@ -481,21 +529,28 @@ section#register form input { /*inputs cadastro*/
 	}
 }
 
-section#register form label { /*label cadastro*/
-  margin: 1rem;
+section .register{ /*label cadastro*/
+  display: flex;
+  justify-content: center;
+  margin: 0rem;
   font-size: 2rem;
-  color: $secondary_color;
+  color: $primary_color;
+}
+#botton_cadastro{
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
 }
 
 button, button::after { /*botoes cadastro*/
-  width: 380px;
+  width: 350px;
   height: 86px;
   font-size: 36px;
   background: linear-gradient(45deg, transparent 5%, $primary_color 5%);
   border: 0;
   color: #fff;
   letter-spacing: 3px;
-  line-height: 88px;
+  // line-height: 88px;
   box-shadow: 6px 0px 0px $secondary_color;
   outline: transparent;
   position: relative;
@@ -573,7 +628,75 @@ button:hover::after { /*botoes cadastro*/
     transform: translate(0);
   }
 }
+/*pagina DETALHES*////////////////////////////////////*PAGINA DETALHES*/
+section.detalhes {
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 3rem;
+  width: 100%;
+  border: solid 3px $primary_color;
+  margin-top: 2rem;
+  margin-left: -3rem;
+}
+section.detalhes p.descricao { /*descricao detalhes*/
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  color: $primary_color;
+  font-size: 1.2rem;
+}
 
+section.detalhes img { /*imagem detalhes*/
+  width: 25%;
+  border: solid 4px $primary_color;
+  box-shadow: inset 0 0 1em gray;
+}
+
+section.detalhes h3 { /*product name detalhes*/
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: $primary_color;
+  font-size: 1.3rem;
+}
+
+$avatar-size: 32px;
+
+.wrapper { /*product name(descrição)*/
+	text-align: center;
+	h3 {
+		color: #fff;
+		text-transform: uppercase;
+		font-weight: 700;
+		background: linear-gradient(to right,#d80000 10%, #7e009e 50%, $primary_color 60%);
+		background-size: auto auto;
+		background-clip: border-box;
+		background-size: 200% auto;
+		color: #fff;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		animation: textclip 1.5s linear infinite;
+		display: inline-block;
+	}
+}
+@keyframes textclip { 
+	to {
+		background-position: 200% center;
+	}
+}
+
+
+section.detalhes p#num { /*id detalhes*/
+  font-size: 1.2rem;
+  margin-top: -1.2rem;
+  color: $primary_color;
+}
+section.detalhes p.preco { /*preço detalhes*/
+  color: $primary_color;
+  margin: 0.1rem;
+  font-size: 1.5rem;
+}
+ /*footer*/////////////////////////*footer*/
 footer { /* rodapé do formulário  dos produtos*/
   height: 12rem;
   background-color: #707070;
@@ -591,4 +714,63 @@ footer a { /*rodapé do formulário dos produtos*/
 #back { /*backgroung*/
   width: 100%;
 
+}
+/*modal put*////////////////////////////////////*modal put*/
+.modal_overlay { /*overlay*/
+  background-color: #00000080;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.modal{ /*modal*/
+  margin: 1rem;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  min-height: 300px;
+  background-color: rgb(190, 190, 190);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal_header{ /*header modal*/
+  display: flex;
+  justify-content: space-between;
+  background-color: $primary_color;
+  padding: .5rem;
+  color: #fff;
+}
+
+.modal_header a#close_modal_put { 
+font-size: 1.4rem;
+color: #fff;
+text-decoration: none;
+}
+
+.modal_body { /*body modal*/
+  padding: 0.5rem 1rem;
+}
+
+.modal_body #form #botton_up{ /*botoes modal*/
+  padding: .6rem;
+  display: flex;
+  justify-content: center;
+  width: 60%;
+  margin: .5rem auto;
+}
+
+.modal_body #form label{ /*label do modal*/
+font-size: 1rem;
+display: flex;
+justify-content: center;
 }

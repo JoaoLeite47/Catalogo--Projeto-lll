@@ -1,30 +1,85 @@
-import { catalogo } from '../models/catalogo.js'
+import { catalogo } from "../models/catalogo.js";
 
-export const getIndex = async (req, res) => { // rota raiz
-    try {
-        let lista_produtos = await catalogo.findAll(); // busca todos os produtos
-    res.render('index.ejs', {lista_produtos}) // renderiza a página index.ejs
-    } catch (err) { // caso ocorra algum erro, executa o bloco abaixo
-        res.status(500).send({err: err.message}) // erro 500
-    }
-}
+export const getIndex = async (req, res) => {
+  // rota raiz
+  try {
+    let lista_produtos = await catalogo.findAll(); // busca todos os produtos
+    res.render("index.ejs", { lista_produtos, produtoPut: null, produtoDel: null }); // renderiza a página index.ejs
+  } catch (err) {
+    // caso ocorra algum erro, executa o bloco abaixo
+    res.status(500).send({ err: err.message }); // erro 500
+  }
+};
 
-export const getCriar = async (req, res) => { // rota criar
-    try {
-    res.render('signup.ejs') // renderiza a página signup.ejs
-    } catch (err) { // caso ocorra algum erro, executa o bloco abaixo
-        res.status(500).send({err: err.message}) // erro 500
-    }
-}
+export const getEdit = async (req, res) => {
+  // rota editar
+  try {
+    const method = req.params.method; // pega o método
+    let lista_produtos = await catalogo.findAll(); // busca todos os produtos
+    const produto = await catalogo.findByPk(req.params.id); // busca o produto pelo id
 
-export const postCriar = async (req, res) => { // rota criar 2
-    try {
-    const { nome, descricao , preco, img} = req.body // pega os dados do formulário
-    if(!nome || !descricao || !preco || !img ){res.redirect('/error')} // se não tiver nome, descrição, preço ou imagem, redireciona para a página de erro
-    await catalogo.create({nome, descricao, preco, img}) // cria um novo produto
-    res.redirect('/') // redireciona para a rota raiz
+    if (method == "put") {
+      // se o método for put
+      res.render("index.ejs", {
+        lista_produtos,
+        produtoPut: produto,
+        produtoDel: null,
+      });
+    } else {
+      res.render("index.ejs", {
+        // se o método for delete
+        lista_produtos,
+        produtoPut: null,
+        produtoDel: produto,
+      });
     }
-    catch(err) {
-        res.status(500).send({err: err.message}) // erro 500
-    }
-}
+  } catch (err) {
+    // caso ocorra algum erro, executa o bloco abaixo
+    res.status(500).send({ err: err.message }); // erro 500
+  }
+};
+
+export const update = async (req, res) => {
+  try {
+    const produto = req.body; // pega os dados do formulário
+    await catalogo.update(produto , { where: { id: req.params.id } }) // atualiza o produto
+    res.redirect("/")
+  } catch (err) {
+    res.status(500).send({ err: err.message }); // erro 500
+  }
+};
+
+export const getCriar = async (req, res) => {
+  // rota criar
+  try {
+    res.render("signup.ejs"); // renderiza a página signup.ejs
+  } catch (err) {
+    // caso ocorra algum erro, executa o bloco abaixo
+    res.status(500).send({ err: err.message }); // erro 500
+  }
+};
+
+export const getDetalhes = async (req, res) => {
+  // rota detalhes
+  try {
+    let produto = await catalogo.findByPk(req.params.id); // busca o produto pelo id
+    res.render("detalhes.ejs", { produto }); // renderiza a página detalhes.ejs
+  } catch (err) {
+    // caso ocorra algum erro, executa o bloco abaixo
+    res.status(500).send({ err: err.message }); // erro 500
+  }
+};
+
+export const postCriar = async (req, res) => {
+  // rota criar 2
+  try {
+    const { nome, descricao, preco, img } = req.body; // pega os dados do formulário
+    if (!nome || !descricao || !preco || !img) {
+      res.redirect("/error");
+    } // se não tiver nome, descrição, preço ou imagem, redireciona para a página de erro
+    await catalogo.create({ nome, descricao, preco, img }); // cria um novo produto
+    res.redirect("/"); // redireciona para a rota raiz
+  } catch (err) {
+    res.status(500).send({ err: err.message }); // erro 500
+  }
+};

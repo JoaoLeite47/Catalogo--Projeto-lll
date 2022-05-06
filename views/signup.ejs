@@ -14,22 +14,25 @@
     <main>
         <section id="register">
             <h1>NOVO REGISTRO!</h1>
-    
+        </section>
+        <section id="formulario">
             <form id="form" action="/cadastro" method="post">
-              <label for="img">Link da Imagem</label>
-              <input type="url" name="img" id="img" required/>
-    
-              <label for="nome">nome</label>
-              <input type="text" id="nome" name="nome" required/>
-    
-              <label for="descricao">descrição</label>
-              <input type="text" name="descricao" id="descricao" required/>
-    
-              <label for="preco">preço</label>
-              <input min="1" type="number" name="preco" id="preco" required/>
-    
-              <button id="submit" type="submit">Cadastar</button>
-            </form>
+                <label class="register" for="img">Link da Imagem</label>
+                <input type="url" name="img" id="img" required/>
+      
+                <label class="register" for="nome">nome</label>
+                <input type="text" id="nome" name="nome" required/>
+      
+                <label class="register" for="descricao">descrição</label>
+                <input type="text" name="descricao" id="descricao" required/>
+      
+                <label class="register" for="preco">preço</label>
+                <input min="1" type="number" name="preco" id="preco" required/>
+              </form>
+              <section id="botton_cadastro">
+                <button id="submit" type="submit">Cadastar</button>
+              </section>
+        </section>
     </main>
     <%- include('./partials/footer.ejs') %>
 </body>
