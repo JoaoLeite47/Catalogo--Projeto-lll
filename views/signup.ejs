@@ -1,40 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <link
+      rel="shortcut icon"
+      type="image/x-png"
+      href="/img/logo 1.png"
+      width="100px"
+    />
+    <title>Sign-up</title>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/style.css" rel="stylesheet">
-    <title> Sign-up </title>
-</head>
-
-<body>
+  <body>
     <%- include('./partials/header.ejs') %>
     <main>
-        <section id="register">
-            <h1>NOVO REGISTRO!</h1>
+      <section id="register">
+        <h1>NOVO REGISTRO!</h1>
+      </section>
+      <section id="formulario">
+        <form id="form" action="/cadastro" method="post">
+          <label class="register" for="img">Link da Imagem</label>
+          <input type="url" name="img" id="img" required />
+
+          <label class="register" for="nome">nome</label>
+          <input type="text" id="nome" name="nome" required />
+
+          <label class="register" for="descricao">descrição</label>
+          <input type="text" name="descricao" id="descricao" required />
+
+          <label class="register" for="preco">preço</label>
+          <input min="1" type="number" name="preco" id="preco" required />
+        </form>
+        <section id="botton_cadastro">
+          <button id="submit" type="submit">Cadastar</button>
         </section>
-        <section id="formulario">
-            <form id="form" action="/cadastro" method="post">
-                <label class="register" for="img">Link da Imagem</label>
-                <input type="url" name="img" id="img" required/>
-      
-                <label class="register" for="nome">nome</label>
-                <input type="text" id="nome" name="nome" required/>
-      
-                <label class="register" for="descricao">descrição</label>
-                <input type="text" name="descricao" id="descricao" required/>
-      
-                <label class="register" for="preco">preço</label>
-                <input min="1" type="number" name="preco" id="preco" required/>
-              </form>
-              <section id="botton_cadastro">
-                <button id="submit" type="submit">Cadastar</button>
-              </section>
-        </section>
+      </section>
     </main>
     <%- include('./partials/footer.ejs') %>
-</body>
-<script src="/js/script.js"></script>
+  </body>
+  <script src="/js/script.js"></script>
 </html>

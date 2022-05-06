@@ -1,19 +1,26 @@
-import express from 'express'
-import { getIndex, getCriar, postCriar, getDetalhes, getEdit, update } from '../controllers/Controlador.js'
+import express from "express";
+import {
+  getIndex,
+  getCriar,
+  postCriar,
+  getDetalhes,
+  getEdit,
+  update,
+  remove,
+} from "../controllers/Controlador.js";
 
-export const routers = express.Router() // instancia do express (filtro de rotas)
+export const routers = express.Router(); // instancia do express (filtro de rotas)
 
-routers.get('/', getIndex) // rota raiz
+routers.get("/", getIndex); // rota raiz
 
-routers.get('/signup', getCriar) // rota criar
+routers.get("/signup", getCriar); // rota criar
 
-routers.get('/detalhes/:id', getDetalhes) // rota detalhes
+routers.get("/detalhes/:id", getDetalhes); // rota detalhes
 
-routers.post('/cadastro', postCriar) // rota criar execução
+routers.post("/cadastro", postCriar); // rota criar execução
 
-routers.get('/getEdit/:id/:method', getEdit) // rota editar
+routers.get("/getEdit/:id/:method", getEdit); // rota editar
 
-routers.post('/update/:id', update) // rota editar execução)
+routers.post("/update/:id", update); // rota editar execução)
 
-
-
+routers.get("/remove/:id", remove); // rota remover

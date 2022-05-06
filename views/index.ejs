@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/css/style.css" rel="stylesheet" />
     <title>Hopee</title>
+    <link
+      rel="shortcut icon"
+      type="image/x-png"
+      href="/img/logo 1.png"
+      width="100px"
+    />
   </head>
 
   <body>
@@ -13,40 +19,56 @@
     <section class="wallp">
       <img src="img/Wallpaper Gamer.png" alt="" />
       <div class="sign">
-        <span class="fast-flicker">DE</span>GAMERS<span class="flicker">PARA</span>GAMERS
+        <span class="fast-flicker">DE</span>GAMERS<span class="flicker"
+          >PARA</span
+        >GAMERS
       </div>
     </section>
     <main>
-      <section>
+      <section id="section1">
+        <!-- Section 1 -->
         <div class="container">
-          <div class="glitch" data-text="PORQUE_SEM_RGB_NÃO_É_GAMER!">PORQUE_SEM_RGB_NÃO_É_GAMER!</div>
+          <div class="glitch" data-text="PORQUE_SEM_RGB_NÃO_É_GAMER!">
+            PORQUE_SEM_RGB_NÃO_É_GAMER!
+          </div>
         </div>
       </section>
 
       <% lista_produtos.forEach((produto,id) => { %>
-      <div class = base>
-        <div class = card>
-          <div class = image>
-            <img href = "#" src = "<%= produto.img %>">
+      <!-- forEach para varrer a lista de produtos -->
+      <div class="base">
+        <div class="card">
+          <div class="image">
+            <img href="#" src="<%= produto.img %>" />
+            <!-- src = imagem do produto -->
           </div>
-          <div class = content>
+          <div class="content">
             <h3><%= produto.nome %></h3>
-            <a class="rem_edit" href="/getEdit/<%= produto.id %>/delete">delete</a>
-              <a class="rem_edit" href="/getEdit/<%= produto.id %>/put">editar</a>
-              <div>
-                <span class="span2" >
-                  <a id="detalhe" href="/detalhes/<%= produto.id %> "></a>
-                </span>
-              </div>
+            <!-- nome do produto -->
+            <a class="rem_edit" href="/getEdit/<%= produto.id %>/delete"
+              >delete</a
+            >
+            <!-- link para deletar produto -->
+            <a class="rem_edit" href="/getEdit/<%= produto.id %>/put">editar</a>
+            <!-- link para editar produto -->
+            <div>
+              <span class="span2">
+                <a id="detalhe" href="/detalhes/<%= produto.id %> "></a>
+                <!-- link para detalhes do produto -->
+              </span>
+            </div>
           </div>
-        </div>    
+        </div>
       </div>
       <% }) %>
     </main>
 
-      <% if (produtoPut != null) { %> 
-        <%- include('./partials/modalput.ejs') %>
-      <% } %>
+    <% if (produtoPut != null) { %>
+    <!-- se o produto for editado, ele aparece -->
+    <%- include('./partials/modalput.ejs') %> <% } %> <% if (produtoDel != null)
+    { %>
+    <!-- se o produto for editado, ele aparece -->
+    <%- include('./partials/modalDel.ejs') %> <% } %>
 
     <section>
       <img id="back" src="/img/background.png" alt="backgroung" />

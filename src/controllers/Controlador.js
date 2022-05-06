@@ -1,10 +1,15 @@
 import { catalogo } from "../models/catalogo.js";
 
+
 export const getIndex = async (req, res) => {
   // rota raiz
   try {
-    let lista_produtos = await catalogo.findAll(); // busca todos os produtos
-    res.render("index.ejs", { lista_produtos, produtoPut: null, produtoDel: null }); // renderiza a página index.ejs
+    let lista_produtos = await catalogo.findAll({ order: [["id", "ASC"]] }); // busca todos os produtos // indo por ordem crescente
+    res.render("index.ejs", {
+      lista_produtos,
+      produtoPut: null,
+      produtoDel: null,
+    }); // renderiza a página index.ejs
   } catch (err) {
     // caso ocorra algum erro, executa o bloco abaixo
     res.status(500).send({ err: err.message }); // erro 500
@@ -15,7 +20,7 @@ export const getEdit = async (req, res) => {
   // rota editar
   try {
     const method = req.params.method; // pega o método
-    let lista_produtos = await catalogo.findAll(); // busca todos os produtos
+    let lista_produtos = await catalogo.findAll({ order: [["id", "ASC"]] }); // busca todos os produtos // indo por ordem crescente
     const produto = await catalogo.findByPk(req.params.id); // busca o produto pelo id
 
     if (method == "put") {
@@ -41,9 +46,10 @@ export const getEdit = async (req, res) => {
 
 export const update = async (req, res) => {
   try {
+    // rota editar execução
     const produto = req.body; // pega os dados do formulário
-    await catalogo.update(produto , { where: { id: req.params.id } }) // atualiza o produto
-    res.redirect("/")
+    await catalogo.update(produto, { where: { id: req.params.id } }); // atualiza o produto
+    res.redirect("/");
   } catch (err) {
     res.status(500).send({ err: err.message }); // erro 500
   }
@@ -71,7 +77,7 @@ export const getDetalhes = async (req, res) => {
 };
 
 export const postCriar = async (req, res) => {
-  // rota criar 2
+  // rota criar execução
   try {
     const { nome, descricao, preco, img } = req.body; // pega os dados do formulário
     if (!nome || !descricao || !preco || !img) {
@@ -83,3 +89,16 @@ export const postCriar = async (req, res) => {
     res.status(500).send({ err: err.message }); // erro 500
   }
 };
+
+export const remove = async (req, res) => {
+  // rota remover
+  try {
+    // rota remover execução
+    await catalogo.destroy({ where: { id: req.params.id } }); // remove o produto
+    res.redirect("/"); // redireciona para a rota raiz
+  } catch (err) {
+    res.status(500).send({ err: err.message }); // erro 500
+  }
+};
+
+// messages

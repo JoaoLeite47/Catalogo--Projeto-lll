@@ -12,7 +12,7 @@ body {
   height: 100vh; /* altura total da página */
   width: 100vw; /* tamanho da tela */
 }
-/*header*/
+/*header*////////////////////////////////*header*/
 header { /* cabeçalho */
   display: flex; /* exibir como flex */
   padding: 0.5rem; /* padding */
@@ -46,45 +46,45 @@ header ul { /* lista */
 }
 header ul li { /* item da lista */
   color: $primary_color;
-  font-weight: bold;
+  font-weight: bold; /* fonte negrito */
   transition-duration: 0.5s;
 }
 header ul li:hover {
 color: #ffffff;
 }
-
+///*index*/////////////////////*index*/
 main {   
 background-color: #111111;
   background-position: 100%;
-  background-size: 140rem;
+  background-size: 150rem;
   min-height: 100%; /* altura mínima */
-  padding: 10px;
+  padding: 5px;
 }
-.wallp { /*wallpaper inicial*/
+.wallp { /*wallpaper posição*/
   width: 100%;
   height: 500;
 }
-.wallp img {
+.wallp img { /*imagem do wallpaper tamanho*/
   width: 100%;
   height: auto;
 }
 
-.sign { /* container do formulário top*/
-  position: absolute;
-  display: flex;
-  left: 50%;
-  top: 50%;
-  justify-content: center;
-  align-items: center;
-  background-image: radial-gradient(
+.sign { /* neon top*/
+  position: absolute; /* posição absoluta */
+  display: flex; /* exibir como flex */
+  left: 50vw; /* posição do neon */
+  top: 30vw; /* posição do neon */
+  width: 20%; /* largura do neon */
+  justify-content: center; /* alinhar itens */
+  background-image: radial-gradient( 
     ellipse 50% 35% at 50% 50%,
     $primary_color,
     transparent
   );
-  transform: translate(-50%, -50%);
-  letter-spacing: 2;
-  text-transform: uppercase;
-  font-size: 6em;
+  transform: translate(-50%, -50%); 
+  letter-spacing: 2; /* espaçamento entre letras */
+  text-transform: uppercase; /* maiúsculas */
+  font-size: 6rem; /* tamanho da fonte */
   color: #39ff3c;
   text-shadow: 0 0 0.6rem #37ff3a, 0 0 1.5rem #00a003,
     -0.2rem 0.1rem 1rem #02DB06, 0.2rem 0.1rem 1rem #02DB06,
@@ -230,14 +230,14 @@ background-color: #111111;
     opacity: 1;
   }
 }
-.container { /* container do formulário  RGB*/
+#section1 .container { /* base formulário  RGB*/
   position: absolute;
   transform: translate(-50%, -50%);
   left: 50vw;
  top: 70vw;
 }
 
-.glitch { /* container do formulário  RGB*/
+.glitch { /*  formulário  RGB*/
   color: $primary_color;
   position: relative;
   font-size: 4vw;
@@ -245,7 +245,7 @@ background-color: #111111;
   animation: glitch 5s 5s infinite;
 }
 
-.glitch::before { /* container do formulário  RGB*/
+.glitch::before { /*  formulário  RGB*/
   content: attr(data-text);
   position: absolute;
   left: -2px;
@@ -256,7 +256,7 @@ background-color: #111111;
   animation: noise-1 3s linear infinite alternate-reverse, glitch 5s 5.05s infinite;
 }
 
-.glitch::after { /* container do formulário  RGB*/
+.glitch::after { /*  formulário  RGB*/
   content: attr(data-text);
   position: absolute;
   left: 2px;
@@ -287,7 +287,7 @@ background-color: #111111;
   }
 }
 
-@keyframes noise-2 {
+@keyframes noise-2 { 
   $steps: 30;
   @for $i from 0 through $steps {
     #{percentage($i*(1/$steps))} {
@@ -298,26 +298,24 @@ background-color: #111111;
   }
 }
 
-.scanlines { /* container do formulário  RGB*/
+.scanlines { /*  formulário  RGB*/
   overflow: hidden;
   mix-blend-mode: difference;
 }
 
-.scanlines::before {
+.scanlines::before { /* formulário  RGB*/
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-
-  background: repeating-linear-gradient(
+  background: repeating-linear-gradient( 
     to bottom,
     transparent 0%,
     rgba(255, 255, 255, 0.05) .5%,
     transparent 1%
   );
-
   animation: fudge 7s ease-in-out alternate infinite;
 }
 
@@ -347,6 +345,7 @@ background-color: #111111;
   padding : 20px 15px;
   
   display : flex;
+  justify-content: center;
   flex-direction : column;
   box-shadow : 0 5px 20px rgba(0,0,0,0.5);
   transition : 0.3s ease-in-out;
@@ -485,10 +484,10 @@ background-color: #111111;
 
 /*PAGINA CADASTRO!*//////////////////////////////////////////////////////////*PAGINA CADASTRO*/
 
-$character-w: 1ch; /* width do character */
-$gap: .5*$character-w; /* gap entre os caracteres */
-$n-character: 12; /* nnumeros aparentes de characters */
-$in-w: $n-character*($character-w + $gap); /* espaço entre o input */
+$character_w: 1ch; /* width do character */
+$gap: .5*$character_w; /* gap entre os caracteres */
+$n-character: 12; /* numeros aparentes de characters */
+$espaco_w: $n_character*($character_w + $gap); /* espaço entre o input */
 
 
 section#register { /*section cadastro*/
@@ -515,15 +514,15 @@ section#formulario form input { /*inputs cadastro*/
 	margin: 1em auto;
 	border: none;
 	padding: 0;
-	width: $in-w;
+	width: $espaco_w;
 	background: repeating-linear-gradient(90deg, 
-		dimgrey 0, dimgrey $character-w, 
-		transparent 0, transparent $character-w + $gap) 
-		0 100%/ #{$in-w - $gap} 2px no-repeat;
+		dimgrey 0, dimgrey $character_w, 
+		transparent 0, transparent $character_w + $gap) 
+		0 100%/ #{$espaco_w - $gap} 2px no-repeat;
 	font: 5ch droid sans mono, consolas, monospace;
 	letter-spacing: $gap;
 	
-	&:focus {
+	&:focus { /*inputs cadastro*/
 		outline: none;
 		color: $primary_color;
 	}
@@ -658,8 +657,6 @@ section.detalhes h3 { /*product name detalhes*/
   font-size: 1.3rem;
 }
 
-$avatar-size: 32px;
-
 .wrapper { /*product name(descrição)*/
 	text-align: center;
 	h3 {
@@ -754,7 +751,8 @@ footer a { /*rodapé do formulário dos produtos*/
 .modal_header a#close_modal_put { 
 font-size: 1.4rem;
 color: #fff;
-text-decoration: none;
+text-decoration: none;;
+font-weight: bold;
 }
 
 .modal_body { /*body modal*/
@@ -773,4 +771,46 @@ text-decoration: none;
 font-size: 1rem;
 display: flex;
 justify-content: center;
+}
+
+/*modal Delete*//////////////////////*Modal Delete*/
+
+.modal_body p{ /*p do modal delete*/
+  width: 100%;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+div#delete_btn{
+display: flex;
+margin: 0 auto;
+}
+
+div#delete_btn a{
+  padding: .7rem;
+  text-decoration: none;
+  width: 40%;
+  margin: 2rem 1rem 1rem ;
+  text-align: center;
+}
+
+div#delete_btn a#no {
+  color: #FF0303;
+  border: solid 1px #FF0303;
+  transition: all ease-in-out .2s;
+
+}
+div#delete_btn a#no:hover {
+  background-color: #FF0303;
+  color: #fff;
+}
+
+div#delete_btn a#yes {
+  color: #29005C;
+  border: solid 1px #29005C;
+  transition: all ease-in-out .2s;
+}
+div#delete_btn a#yes:hover {
+  background-color: #29005C;
+  color: #fff;
 }

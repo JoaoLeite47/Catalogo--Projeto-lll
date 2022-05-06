@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-png"
+      href="/img/logo 1.png"
+      width="100px"
+    />
+  </head>
+  
+  <body>
+    <section class="modal_overlay" id="overlay">
+      <div class="modal" id="modal">
+        <div class="modal_header">
+          <h3>Deletar Produto</h3>
+          <a id="close_modal_put" href="/"><i class="bi bi-x-square"></i></a>
+        </div>
+
+        <div class="modal_body">
+          <p>Tem certeza que deseja excluir o <%= produtoDel.nome %></p>
+          <div id="delete_btn">
+            <a id="no" href="/">Não</a>
+            <a id="yes" href="/remove/<%= produtoDel.id %>">Sim</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
