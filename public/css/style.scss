@@ -756,15 +756,8 @@ font-weight: bold;
   justify-content: center;
   width: 60%;
   margin: .5rem auto;
-}
-
-.modal_body #form label{ /*label do modal*/
-font-size: 1rem;
-display: flex;
-justify-content: center;
-}
-.modal_body #form #botton_up {
   color: #29005C;
+  background-color: rgb(190, 190, 190);
   border: solid 1px #29005C;
   transition: all ease-in-out .2s;
 }
@@ -773,6 +766,12 @@ justify-content: center;
   color: #fff;
 }
 
+
+.modal_body #form label{ /*label do modal*/
+font-size: 1rem;
+display: flex;
+justify-content: center;
+}
 /*modal Delete*//////////////////////*Modal Delete*/
 
 .modal_body p{ /*p do modal delete*/
