@@ -1,6 +1,5 @@
 import { catalogo } from "../models/catalogo.js";
 
-
 export const getIndex = async (req, res) => {
   // rota raiz
   try {

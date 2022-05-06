@@ -8,6 +8,11 @@
 $primary_color: #02DB06;
 $secondary_color: #707070;
 
+$character_w: 1ch; /* width do character */
+$gap: .5*$character_w; /* gap entre os caracteres */
+$n-character: 12; /* numeros aparentes de characters */
+$espaco_w: $n_character*($character_w + $gap); /* espaço entre o input */
+
 body {
   height: 100vh; /* altura total da página */
   width: 100vw; /* tamanho da tela */
@@ -484,11 +489,6 @@ background-color: #111111;
 
 /*PAGINA CADASTRO!*//////////////////////////////////////////////////////////*PAGINA CADASTRO*/
 
-$character_w: 1ch; /* width do character */
-$gap: .5*$character_w; /* gap entre os caracteres */
-$n-character: 12; /* numeros aparentes de characters */
-$espaco_w: $n_character*($character_w + $gap); /* espaço entre o input */
-
 
 section#register { /*section cadastro*/
   display: flex;
@@ -527,21 +527,13 @@ section#formulario form input { /*inputs cadastro*/
 		color: $primary_color;
 	}
 }
-
-section .register{ /*label cadastro*/
-  display: flex;
-  justify-content: center;
-  margin: 0rem;
-  font-size: 2rem;
-  color: $primary_color;
-}
 #botton_cadastro{
   display: flex;
   justify-content: center;
   padding-top: 1rem;
 }
 
-button, button::after { /*botoes cadastro*/
+#button_submit, #button_submit::after { /*botoes cadastro*/
   width: 350px;
   height: 86px;
   font-size: 36px;
@@ -549,14 +541,13 @@ button, button::after { /*botoes cadastro*/
   border: 0;
   color: #fff;
   letter-spacing: 3px;
-  // line-height: 88px;
   box-shadow: 6px 0px 0px $secondary_color;
   outline: transparent;
   position: relative;
   cursor: pointer;
 }
 
-button::after { /*botoes cadastro*/
+#button_submit::after { /*botoes cadastro*/
   --slice-0: inset(50% 50% 50% 50%);
   --slice-1: inset(80% -6px 0 0);
   --slice-2: inset(50% -6px 30% 0);
@@ -576,7 +567,7 @@ button::after { /*botoes cadastro*/
   clip-path: var(--slice-0);
 }
 
-button:hover::after { /*botoes cadastro*/
+#button_submit:hover::after { /*botoes cadastro*/
   animation: 1s glitch;
   animation-timing-function: steps(2, end);
 }
@@ -771,6 +762,15 @@ font-weight: bold;
 font-size: 1rem;
 display: flex;
 justify-content: center;
+}
+.modal_body #form #botton_up {
+  color: #29005C;
+  border: solid 1px #29005C;
+  transition: all ease-in-out .2s;
+}
+.modal_body #form #botton_up:hover{
+  background-color: #29005C;
+  color: #fff;
 }
 
 /*modal Delete*//////////////////////*Modal Delete*/
