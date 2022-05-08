@@ -28,7 +28,7 @@ export const getEdit = async (req, res) => {
         lista_produtos,
         produtoPut: produto,
         produtoDel: null,
-      });
+      },);
     } else {
       res.render("index.ejs", {
         // se o método for delete
@@ -57,7 +57,7 @@ export const update = async (req, res) => {
 export const getCriar = async (req, res) => {
   // rota criar
   try {
-    res.render("signup.ejs"); // renderiza a página signup.ejs
+    res.render("signup.ejs", {isAdded: false}); // renderiza a página signup.ejs com o modal de confirmação false
   } catch (err) {
     // caso ocorra algum erro, executa o bloco abaixo
     res.status(500).send({ err: err.message }); // erro 500
@@ -83,7 +83,7 @@ export const postCriar = async (req, res) => {
       res.redirect("/error");
     } // se não tiver nome, descrição, preço ou imagem, redireciona para a página de erro
     await catalogo.create({ nome, descricao, preco, img }); // cria um novo produto
-    res.redirect("/"); // redireciona para a rota raiz
+    res.render("signup.ejs", {isAdded: true}); // redireciona para a rota raiz junto com o modal de confirmação true
   } catch (err) {
     res.status(500).send({ err: err.message }); // erro 500
   }
@@ -99,5 +99,3 @@ export const remove = async (req, res) => {
     res.status(500).send({ err: err.message }); // erro 500
   }
 };
-
-// messages
