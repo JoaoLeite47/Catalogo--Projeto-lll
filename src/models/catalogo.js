@@ -35,13 +35,8 @@ export const catalogo = connection.define( // cria a tabela no banco de dados
   }
 );
 
-const initTable = async() =>{ //function para criar um DB caso não haja algum 
-  try {
+const initTable = async() => { //function para criar um DB caso não haja algum 
     await catalogo.sync() 
-}
-catch(error){ 
-    error.message
-}
-}
+};
 
 initTable()

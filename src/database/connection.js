@@ -14,11 +14,11 @@ export const connection = new Sequelize(
     // }
     process.env.DB_URL, // requisição para DB em nuvem criado no render
     {
-       dialect: 'postgres',
+       dialect: "postgres",
        dialectOptions: {
            ssl: { //requisição para ssl na url do site
                require: true,
-               rejectUnauthorized: false  // caso a requisição falhe, o usuário poderá entrar do msm jeito
+               rejectUnauthorized: false,  // caso a requisição falhe, o usuário poderá entrar do msm jeito
            }
        } 
     }
